@@ -17,17 +17,26 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetchAllBrands().then((data) => {
-      setBrands(data);
-    });
-    fetchAllProducts().then((data) => {
-      setProducts(data);
+    const fetchData = async () => {
+      const brands = await fetchAllBrands();
+      const products = await fetchAllProducts();
+      setBrands(brands);
+      setProducts(products);
+    };
+
+    fetchData().catch((err) => {
+      alert(
+        "Data fetching went wrong. Please look at the console for more information"
+      );
+      console.log(err);
     });
   }, []);
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  console.log(brands, products);
 
   const onProductCreate = async (values: ProductInput) => {
     try {
