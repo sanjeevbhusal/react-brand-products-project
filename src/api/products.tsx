@@ -9,7 +9,7 @@ export interface Product {
 export type ProductInput = Omit<Product, "id">;
 
 const productApi = axios.create({
-  baseURL: "http://localhost:3000/products",
+  baseURL: "https://json-server-aa6m.onrender.com/products",
 });
 
 export const fetchAllProducts = async (): Promise<Product[]> => {

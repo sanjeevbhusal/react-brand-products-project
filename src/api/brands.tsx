@@ -6,7 +6,7 @@ export interface Brand {
 }
 
 const brandApi = axios.create({
-  baseURL: "http://localhost:3000/brands",
+  baseURL: "https://json-server-aa6m.onrender.com/brands",
 });
 
 export const fetchAllBrands = async (): Promise<Brand[]> => {
